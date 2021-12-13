@@ -173,11 +173,11 @@ customers[7:15] %>% slice(1:4) %>%
 </table>
 
 
-Some Basic charts included in the app
+Some Basic charts & Screenshots
 ========================================================
 
 
 <img src="Rplot1.png" title="A caption" alt="A caption" width="50%" /><img src="Rplot2.png" title="A caption" alt="A caption" width="50%" />
-<img src="app_screen_shots.PNG" title="A caption 2" alt="A caption2" width="50%" /><img src="app_screen_shots1.png" title="A caption2" alt="A caption2" width="50%" />
-<img src="app_screen_shots3.png" title="A caption 2" alt="A caption2" width="50%" />
+<img src="app_screen_shots.PNG" title="A caption 2" alt="A caption2" width="50%" /><img src="app_screen_shots1.PNG" title="A caption2" alt="A caption2" width="50%" />
+<img src="app_screen_shots3.PNG" title="A caption 2" alt="A caption2" width="50%" />
 
