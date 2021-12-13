@@ -1,8 +1,5 @@
 A basic Shiny Dashboard
 ========================================================
-author: Mohamed Lemine Beydia
-date: 12/12/2021
-autosize: true
 
 Description
 ========================================================
