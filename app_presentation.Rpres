@@ -1,0 +1,107 @@
+A basic Shiny Dashboard
+========================================================
+author: Mohamed Lemine Beydia
+date: 12/12/2021
+autosize: true
+
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+
+Overview
+========================================================
+This is the reproducible pitch presentation for the final course project of **Coursera Data Science Specialization Course 9**: **Developing Data Science Tools**. This document will go over the basics of developing a basic Shiny Dashboard app. For more information, please see the following links:
+
+1. The **customers dataset** can be accessed with the command **data(customers)** in R.
+Note that this dataset was modified (randomly) to include some useful features.
+3. The GitHub repository containing the R codes required to build the Shiny App (**server.R** and **ui.R**)can be accessed [here](https://github.com/mlemineb/Rprojects)
+2. The Shiny app can be accessed [here](https://lbeydia.shinyapps.io/my_basic_shiny_dashbord/), which contains
+  - A dashboard page summarizing some information on customers, sales and products.  
+  - Other pages with Histogram,boxplot and a downloadable raw dataset.
+
+
+Data set exploration (1/2)
+========================================================
+class: small-code
+
+
+```{r,echo=T,message=FALSE, tidy=T, tidy.opts=list(width.cutoff=50)}
+library(datasetsICR)
+library(randomNames)
+library(kableExtra)
+library(dplyr)
+# load the dataset
+data(customers)
+# add customers'ID
+customers$CustomerID<-1:nrow(customers)
+# add some random names, gender and ethnicity for each customer
+customers<-cbind(customers,randomNames(nrow(customers), 
+                                       return.complete.data=TRUE))
+# variables' recoding
+customers$gender<-ifelse(customers$gender==1,"Female","Man")
+customers$Channel<-ifelse(customers$Channel==1,"Hotel/Restaurant/Cafe"
+                          ,"Retail")
+
+customers$Region<-ifelse(customers$Region==1,"Lisbon",
+                         ifelse(customers$Region==2,"Oporto","Other"))
+# add age and total_spent variables for each customer
+customers$Age<-round(rnorm(nrow(customers), mean = 50, sd = 10),digits=0)
+customers$Total_spend<- as.numeric(apply(customers[,3:8], 1, sum))
+# reorder the dataset
+customers<-customers[c(9,12,13,14,10,11,1:8,15)]
+
+```
+
+Data set exploration (2/2)
+========================================================
+
+```{r, echo=FALSE}
+library(datasetsICR)
+library(randomNames)
+library(kableExtra)
+library(dplyr)
+
+data(customers)
+customers$CustomerID<-1:nrow(customers)
+customers<-cbind(customers,randomNames(nrow(customers), return.complete.data=TRUE))
+customers$gender<-ifelse(customers$gender==1,"Female","Man")
+customers$Channel<-ifelse(customers$Channel==1,"Hotel/Restaurant/Cafe","Retail")
+customers$Region<-ifelse(customers$Region==1,"Lisbon",
+                         ifelse(customers$Region==2,"Oporto","Other"))
+customers$Age<-round(rnorm(nrow(customers), mean = 50, sd = 10),digits=0)
+customers$Total_spend<- as.numeric(apply(customers[,3:8], 1, sum))
+
+customers<-customers[c(9,12,13,14,10,11,1:8,15)]
+
+customers[1:7] %>% slice(1:4) %>%
+  kbl(caption = "Subset with the first 7 variables") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+customers[7:15] %>% slice(1:4) %>%
+  kbl(caption = "Subset with the last 8 variables") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+Some Basic charts 
+========================================================
+
+
+```{r fig1, echo=FALSE, fig.cap="A caption", out.width = '50%'}
+knitr::include_graphics("Rplot1.png")
+knitr::include_graphics("Rplot2.png")
+
+```
+
+Screenshots
+========================================================
+
+
+```{r fig2, echo=FALSE, fig.cap="A caption ", out.width = '50%'}
+knitr::include_graphics("app_screen_shots.png")
+knitr::include_graphics("app_screen_shots1.png")
+knitr::include_graphics("app_screen_shots3.png")
+
+```
