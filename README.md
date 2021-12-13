@@ -4,19 +4,19 @@ author: Mohamed Lemine Beydia
 date: 12/12/2021
 autosize: true
 
-First Slide
+Description
 ========================================================
-This is the reproducible pitch presentation for the final course project of **Coursera Data Science Specialization Course 9**: **Developing Data Science Tools**. This document will go over the basics of developing a basic Shiny Dashboard app. For more information, please see the following links:
+This is a basic shiny dashboard app devlopped as an assignment for the final course project of **Coursera Data Science Specialization Course 9**: **Developing Data Science Tools**.
 
-1. The **customers dataset** can be accessed with the command **data(customers)** in R.
+1. The dataset used in the app is the  **customers dataset** which can be accessed with the command **data(customers)** in R.
 Note that this dataset was modified (randomly) to include some useful features.
-3. The GitHub repository containing the R codes required to build the Shiny App (**server.R** and **ui.R**)can be accessed [here](https://github.com/wamber-aww/data-products)
-2. The Shiny app can be accessed [here](https://wamber.shinyapps.io/swissdata/), which contains
+2. The Shiny app can be accessed [here](https://lbeydia.shinyapps.io/my_basic_shiny_dashbord/), which contains
   - A dashboard page summarizing some information on customers, sales and products  
   - Other pages with Histogram,boxplot and a downloadable raw dataset
+3. This repo contains a presentation file that summarise the application.
 
 
-Data set exploration (1/2)
+Data set exploration 
 ========================================================
 
 
