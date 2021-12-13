@@ -26,18 +26,25 @@ library(randomNames)
 library(kableExtra)
 library(dplyr)
 
+# load the dataset
 data(customers)
+# add customers'ID
 customers$CustomerID<-1:nrow(customers)
+# add some random names, gender and ethnicity for each customer
 customers<-cbind(customers,randomNames(nrow(customers), return.complete.data=TRUE))
+
+# variables' recoding
 customers$gender<-ifelse(customers$gender==1,"Female","Man")
 customers$Channel<-ifelse(customers$Channel==1,"Hotel/Restaurant/Cafe","Retail")
 customers$Region<-ifelse(customers$Region==1,"Lisbon",
                          ifelse(customers$Region==2,"Oporto","Other"))
+                         
+# add age and total_spent variables for each customer
 customers$Age<-round(rnorm(nrow(customers), mean = 50, sd = 10),digits=0)
 customers$Total_spend<- as.numeric(apply(customers[,3:8], 1, sum))
-
+# reorder the dataset
 customers<-customers[c(9,12,13,14,10,11,1:8,15)]
-
+# print dataset 
 customers[1:7] %>% slice(1:4) %>%
   kbl(caption = "Subset with the first 7 variables") %>%
   kable_classic(full_width = F, html_font = "Cambria")
@@ -171,3 +178,6 @@ Some Basic charts included in the app
 
 
 <img src="Rplot1.png" title="A caption" alt="A caption" width="50%" /><img src="Rplot2.png" title="A caption" alt="A caption" width="50%" />
+<img src="app_screen_shots.png" title="A caption 2" alt="A caption" width="50%" /><img src="app_screen_shots1.png" title="A caption" alt="A caption" width="50%" />
+<img src="app_screen_shots3.png" title="A caption 2" alt="A caption" width="50%" />
+
